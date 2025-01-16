@@ -1,0 +1,22 @@
+<div class="container mt-4">
+    <h2 class="mb-3">Gestión de Usuarios</h2>
+    
+    <!-- Filtro por nombre -->
+    <div class="mb-3">
+      <label for="search" class="form-label">Buscar Usuario:</label>
+      <input
+        type="text"
+        id="search"
+        class="form-control"
+        [(ngModel)]="searchText"
+        placeholder="Escribe el nombre del usuario"
+      />
+    </div>
+
+    <!-- Enlace para navegar a la página de agregar materia -->
+    <a routerLink="add-subject" class="btn btn-success mb-3">Agregar Nuevo Usuario</a>
+    
+    <!-- Componente de la lista -->
+     <app-user-list [users]="filtered | userFilter:searchText"></app-user-list>
+  </div>
+

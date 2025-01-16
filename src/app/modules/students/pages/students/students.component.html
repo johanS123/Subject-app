@@ -1,0 +1,21 @@
+<div class="container mt-4">
+    <h2 class="mb-3">Gestión de Estudiantes</h2>
+    
+    <!-- Filtro por nombre -->
+    <div class="mb-3">
+      <label for="search" class="form-label">Buscar Estudiante:</label>
+      <input
+        type="text"
+        id="search"
+        class="form-control"
+        [(ngModel)]="searchText"
+        placeholder="Escribe el nombre del estudiante"
+      />
+    </div>
+
+    <!-- Enlace para navegar a la página de agregar materia -->
+    <a routerLink="add-student" class="btn btn-success mb-3">Agregar Estudiante</a>
+    
+    <!-- Componente de la lista -->
+    <!-- <app-subject-list [subjects]="filteredSubjects | subjectFilter:searchText"></app-subject-list> -->
+  </div>

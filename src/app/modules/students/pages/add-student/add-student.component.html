@@ -1,0 +1,25 @@
+<div class="container mt-5">
+    <h2>Crear Nuevo Estudiante</h2>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <!-- Campo: Nombre de estudiante -->
+      <div class="form-group mb-3">
+        <label for="name">Nombre del Estudiante</label>
+        <input
+          type="text"
+          id="name"
+          class="form-control"
+          formControlName="name"
+          placeholder="Introduce el nombre del estudiante"
+        />
+        <div *ngIf="f['name'].invalid && (f['name'].dirty || f['name'].touched)" class="text-danger">
+          <small *ngIf="f['name'].errors?.['required']">El nombre es obligatorio.</small>
+        </div>
+      </div>
+  
+      <!-- Botón para Enviar -->
+      <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
+        Crear Estudiante
+      </button>
+    </form>
+  </div>
+  
