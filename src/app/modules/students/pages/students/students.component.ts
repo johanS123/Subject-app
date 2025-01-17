@@ -5,7 +5,7 @@ import { StudentsService } from 'src/app/core/services/students.service';
 @Component({
   selector: 'app-students',
   templateUrl: './students.component.html',
-  styleUrls: ['./students.component.scss']
+  styleUrls: ['./students.component.scss'],
 })
 export class StudentsComponent {
   students: IStudent[] = [];
@@ -15,7 +15,7 @@ export class StudentsComponent {
   constructor(private studentsService: StudentsService) {
     this.getStudents();
   }
-  
+
   getStudents() {
     this.studentsService.getStudent().subscribe((resp: IStudent[] | any) => {
       this.students = resp;
@@ -23,5 +23,9 @@ export class StudentsComponent {
     });
   }
 
-
+  isSaved(value: boolean) {
+    if (value) {
+      this.getStudents();
+    }
+  }
 }

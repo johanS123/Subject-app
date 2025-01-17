@@ -9,15 +9,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { SubjectsService } from 'src/app/core/services/subjects.service';
 import { SubjectFilterPipe } from './pipe/subject-filter.pipe';
 import { RouterModule } from '@angular/router';
-
-
+import { TeachersService } from 'src/app/core/services/teachers.service';
+import { EditSubjectComponent } from './pages/edit-subject/edit-subject.component';
 
 @NgModule({
   declarations: [
     SubjectsComponent,
     AddSubjectComponent,
     SubjectListComponent,
-    SubjectFilterPipe
+    SubjectFilterPipe,
+    EditSubjectComponent,
   ],
   imports: [
     CommonModule,
@@ -25,8 +26,8 @@ import { RouterModule } from '@angular/router';
     SubjectsRoutingModule,
     HttpClientModule,
     RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
-  providers: [SubjectsService]
+  providers: [SubjectsService, TeachersService],
 })
-export class SubjectsModule { }
+export class SubjectsModule {}

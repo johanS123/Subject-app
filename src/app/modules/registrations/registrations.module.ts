@@ -7,14 +7,19 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegistrationsRoutingModule } from './registrations-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-
-
+import { RegistrationService } from 'src/app/core/services/registration.service';
+import { SubjectsService } from 'src/app/core/services/subjects.service';
+import { StudentsService } from 'src/app/core/services/students.service';
+import { RegistrationFilterPipe } from './pipe/registration-filter.pipe';
+import { EditRegistrationComponent } from './pages/edit-registration/edit-registration.component';
 
 @NgModule({
   declarations: [
     RegistrationsComponent,
     AddRegistrationComponent,
-    RegistrationListComponent
+    RegistrationListComponent,
+    RegistrationFilterPipe,
+    EditRegistrationComponent,
   ],
   imports: [
     CommonModule,
@@ -22,7 +27,8 @@ import { RouterModule } from '@angular/router';
     RegistrationsRoutingModule,
     HttpClientModule,
     RouterModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+  ],
+  providers: [RegistrationService, SubjectsService, StudentsService],
 })
-export class RegistrationsModule { }
+export class RegistrationsModule {}

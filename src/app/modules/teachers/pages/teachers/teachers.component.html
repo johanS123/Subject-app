@@ -1,3 +1,24 @@
 <div class="container mt-4">
-    <p>teachers works!</p>
+  <h2 class="mb-3">Gestión de Profesores</h2>
+
+  <!-- Filtro por nombre -->
+  <div class="mb-3">
+    <label for="search" class="form-label">Buscar Profesor:</label>
+    <input
+      type="text"
+      id="search"
+      class="form-control"
+      [(ngModel)]="searchText"
+      placeholder="Escribe el nombre del profesor"
+    />
+  </div>
+
+  <!-- Enlace para navegar a la página de agregar profesores -->
+  <a routerLink="add-teacher" class="btn btn-success mb-3">Agregar Profesor</a>
+
+  <!-- Componente de la lista -->
+  <app-teacher-list
+    [teachers]="filtered | teacherFilter : searchText"
+    (isSaved)="isSaved($event)"
+  ></app-teacher-list>
 </div>

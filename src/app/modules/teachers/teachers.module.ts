@@ -7,14 +7,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TeachersRoutingModule } from './teacher-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-
-
+import { TeachersService } from 'src/app/core/services/teachers.service';
+import { TeacherFilterPipe } from './pipe/teacher-filter.pipe';
+import { EditTeacherComponent } from './pages/edit-teacher/edit-teacher.component';
 
 @NgModule({
   declarations: [
     TeachersComponent,
     AddTeacherComponent,
-    TeacherListComponent
+    TeacherListComponent,
+    TeacherFilterPipe,
+    EditTeacherComponent,
   ],
   imports: [
     CommonModule,
@@ -22,7 +25,8 @@ import { RouterModule } from '@angular/router';
     TeachersRoutingModule,
     HttpClientModule,
     RouterModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+  ],
+  providers: [TeachersService],
 })
-export class TeachersModule { }
+export class TeachersModule {}

@@ -1,0 +1,82 @@
+<div class="container mt-5">
+  <h2>Crear Nueva Materia</h2>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <!-- Campo: Nombre de la Materia -->
+    <div class="form-group mb-3">
+      <label for="name">Nombre de la Materia</label>
+      <input
+        type="text"
+        id="name"
+        class="form-control"
+        formControlName="name"
+        placeholder="Introduce el nombre de la materia"
+      />
+      <div
+        *ngIf="f['name'].invalid && (f['name'].dirty || f['name'].touched)"
+        class="text-danger"
+      >
+        <small *ngIf="f['name'].errors?.['required']"
+          >El nombre es obligatorio.</small
+        >
+        <small *ngIf="f['name'].errors?.['minlength']"
+          >Debe tener al menos 3 caracteres.</small
+        >
+        <small *ngIf="f['name'].errors?.['maxlength']"
+          >Máximo 50 caracteres.</small
+        >
+      </div>
+    </div>
+
+    <!-- Campo: Número de Créditos -->
+    <div class="form-group mb-3">
+      <label for="credits">Número de Créditos</label>
+      <input
+        type="text"
+        id="credits"
+        class="form-control"
+        formControlName="credits"
+        placeholder="Introduce el número de créditos"
+      />
+      <div
+        *ngIf="
+          f['credits'].invalid && (f['credits'].dirty || f['credits'].touched)
+        "
+        class="text-danger"
+      >
+        <small *ngIf="f['credits'].errors?.['required']"
+          >El número de créditos es obligatorio.</small
+        >
+        <small *ngIf="f['credits'].errors?.['min']"
+          >Debe ser al menos 1 crédito.</small
+        >
+        <small *ngIf="f['credits'].errors?.['max']">Máximo 10 créditos.</small>
+      </div>
+    </div>
+
+    <!-- Campo: Profesor -->
+    <div class="form-group mb-3">
+      <label for="teacher">Profesor</label>
+      <select id="teacher" class="form-control" formControlName="teacher">
+        <option value="" disabled>Selecciona un profesor</option>
+        <option [value]="teacher.teacherId" *ngFor="let teacher of teachers">
+          {{ teacher.nameTeacher }}
+        </option>
+      </select>
+      <div
+        *ngIf="
+          f['teacher'].invalid && (f['teacher'].dirty || f['teacher'].touched)
+        "
+        class="text-danger"
+      >
+        <small *ngIf="f['teacher'].errors?.['required']"
+          >El profesor es obligatorio.</small
+        >
+      </div>
+    </div>
+
+    <!-- Botón para Enviar -->
+    <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
+      Editar Materia
+    </button>
+  </form>
+</div>

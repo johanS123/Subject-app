@@ -5,7 +5,7 @@ import { SubjectsService } from 'src/app/core/services/subjects.service';
 @Component({
   selector: 'app-subjects',
   templateUrl: './subjects.component.html',
-  styleUrls: ['./subjects.component.scss']
+  styleUrls: ['./subjects.component.scss'],
 })
 export class SubjectsComponent {
   subjects: ISubject[] = [];
@@ -22,5 +22,11 @@ export class SubjectsComponent {
       this.subjects = resp;
       this.filteredSubjects = [...this.subjects];
     });
+  }
+
+  isSaved(value: boolean) {
+    if (value) {
+      this.getSubjects();
+    }
   }
 }

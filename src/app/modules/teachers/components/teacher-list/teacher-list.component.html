@@ -1,1 +1,42 @@
-<p>teacher-list works!</p>
+<div class="mt-4">
+  <table class="table table-striped table-bordered">
+    <thead class="table-light">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Num. Documento</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Materia</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let teacher of teachers; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ teacher.document }}</td>
+        <td>{{ teacher.nameTeacher }}</td>
+        <td>
+          <ul>
+            <li *ngFor="let subject of teacher.subjects">
+              {{ subject.nameSubject }}
+            </li>
+          </ul>
+        </td>
+        <td>
+          <button
+            [routerLink]="['edit-teacher', teacher.teacherId]"
+            class="btn btn-warning"
+            style="margin-right: 10px"
+          >
+            Editar
+          </button>
+          <button
+            (click)="deleteRegister(teacher.teacherId)"
+            class="btn btn-danger"
+          >
+            Eliminar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

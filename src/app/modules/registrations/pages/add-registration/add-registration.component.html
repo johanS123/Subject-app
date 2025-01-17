@@ -1,1 +1,51 @@
-<p>add-registration works!</p>
+<div class="container mt-5">
+  <h2>Crear Nueva Inscripción</h2>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <!-- Campo: Estudiante -->
+    <div class="form-group mb-3">
+      <label for="student">Estudiante</label>
+      <select id="student" class="form-control" formControlName="student">
+        <option value="" disabled>Selecciona un Estudiante</option>
+        <option [value]="student.studentId" *ngFor="let student of students">
+          {{ student.nameStudent }}
+        </option>
+      </select>
+      <div
+        *ngIf="
+          f['student'].invalid && (f['student'].dirty || f['student'].touched)
+        "
+        class="text-danger"
+      >
+        <small *ngIf="f['student'].errors?.['required']"
+          >El Estudiante es obligatorio.</small
+        >
+      </div>
+    </div>
+
+    <!-- Campo: Materia -->
+    <div class="form-group mb-3">
+      <label for="subject">Materia</label>
+      <select id="subject" class="form-control" formControlName="subject">
+        <option value="" disabled>Selecciona una Materia</option>
+        <option [value]="subject.subjectId" *ngFor="let subject of subjects">
+          {{ subject.nameSubject }}
+        </option>
+      </select>
+      <div
+        *ngIf="
+          f['subject'].invalid && (f['subject'].dirty || f['subject'].touched)
+        "
+        class="text-danger"
+      >
+        <small *ngIf="f['subject'].errors?.['required']"
+          >La materia es obligatoria.</small
+        >
+      </div>
+    </div>
+
+    <!-- Botón para Enviar -->
+    <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
+      Crear Inscripción
+    </button>
+  </form>
+</div>

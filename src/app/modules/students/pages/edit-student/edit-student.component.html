@@ -1,0 +1,58 @@
+<div class="container mt-5">
+  <h2>Editar Estudiante</h2>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <!-- Campo: Nombre de estudiante -->
+    <div class="form-group mb-3">
+      <label for="name">Nombre del Estudiante</label>
+      <input
+        type="text"
+        id="name"
+        class="form-control"
+        formControlName="name"
+        placeholder="Introduce el nombre del estudiante"
+      />
+      <div
+        *ngIf="f['name'].invalid && (f['name'].dirty || f['name'].touched)"
+        class="text-danger"
+      >
+        <small *ngIf="f['name'].errors?.['required']"
+          >El nombre es obligatorio.</small
+        >
+      </div>
+    </div>
+
+    <!-- Campo: Documento de estudiante -->
+    <div class="form-group mb-3">
+      <label for="name">Numero del Documento</label>
+      <input
+        type="text"
+        id="document"
+        class="form-control"
+        formControlName="document"
+        placeholder="Introduce el numero del documento"
+      />
+      <div
+        *ngIf="
+          f['document'].invalid &&
+          (f['document'].dirty || f['document'].touched)
+        "
+        class="text-danger"
+      >
+        <small *ngIf="f['document'].errors?.['required']"
+          >El Numero de Documento es obligatorio.</small
+        >
+        <small *ngIf="f['document'].errors?.['min']"
+          >El Numero de Documento debe tener al menos 3 dígitos.</small
+        >
+        <small *ngIf="f['document'].errors?.['pattern']"
+          >El Numero de Documento solo admite valores numericos.</small
+        >
+      </div>
+    </div>
+
+    <!-- Botón para Enviar -->
+    <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
+      Editar Estudiante
+    </button>
+  </form>
+</div>

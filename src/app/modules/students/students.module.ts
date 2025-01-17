@@ -8,6 +8,8 @@ import { StudentsRoutingModule } from './student-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { StudentsService } from 'src/app/core/services/students.service';
+import { StudentFilterPipe } from './pipe/student-filter.pipe';
+import { EditStudentComponent } from './pages/edit-student/edit-student.component';
 
 
 
@@ -15,7 +17,9 @@ import { StudentsService } from 'src/app/core/services/students.service';
   declarations: [
     StudentsComponent,
     AddStudentComponent,
-    StudentListComponent
+    StudentListComponent,
+    StudentFilterPipe,
+    EditStudentComponent
   ],
   imports: [
     CommonModule,

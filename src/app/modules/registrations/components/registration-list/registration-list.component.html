@@ -1,1 +1,34 @@
-<p>registration-list works!</p>
+<div class="mt-4">
+  <table class="table table-striped table-bordered">
+    <thead class="table-light">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Estudiante</th>
+        <th scope="col">Materia</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let register of registration; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ register.studentName }}</td>
+        <td>{{ register.subjectName }}</td>
+        <td>
+          <button
+            [routerLink]="['edit-registration', register.registrationId]"
+            class="btn btn-warning"
+            style="margin-right: 10px"
+          >
+            Editar
+          </button>
+          <button
+            (click)="deleteRegister(register.registrationId)"
+            class="btn btn-danger"
+          >
+            Eliminar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
